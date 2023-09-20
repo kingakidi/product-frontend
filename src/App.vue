@@ -1,28 +1,44 @@
+<!-- eslint-disable no-undef -->
+<!-- eslint-disable no-undef -->
+<!-- eslint-disable vue/no-unused-components -->
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <header-component></header-component>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import Dashboard from "./components/Dashboard.vue";
+import HeaderComponent from "./components/HeaderComponent.vue";
+// import Buttons from "./components/Buttons.vue";
+import $ from "jquery";
+import M from "materialize-css";
 
 export default {
-  name: 'App',
+  name: "App",
+  data: () => {
+    return {
+      msg: "msg",
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    // Dashboard,
+    HeaderComponent,
+    // Buttons,
+  },
+  beforeCreate: function () {},
+  mounted: function () {
+    M.AutoInit();
+    $("select[required]").css({
+      display: "block",
+      height: 0,
+      padding: 0,
+      width: 0,
+      position: "absolute",
+    });
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style scoped></style>
