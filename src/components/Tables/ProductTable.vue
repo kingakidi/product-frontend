@@ -1,5 +1,5 @@
 <template>
-  <div class="table">
+  <div class="table" style="margin-top: 30px">
     <div class="container">
       <div class="z-depth-1 white t-wrapper">
         <div class="row">
@@ -100,18 +100,31 @@ export default {
   computed: {
     filterProduct() {
       let products = this.products;
+      const currentDate = moment();
+
       if (this.filterCriteria === "") {
         return this.products;
-      } else {
-        products = products.filter((product) => {
-          return moment(product.expiry_date).isSameOrBefore(
-            moment().add(this.filterCriteria, "d")
-          );
+      } else if (this.filterCriteria === "0") {
+        return products.filter((product) => {
+          const expiryDate = moment(product.expiry_date);
+          return expiryDate.isBefore(currentDate);
         });
-        return products;
+      } else {
+        const filterDays = parseInt(this.filterCriteria);
+        if (!isNaN(filterDays)) {
+          const filterDate = currentDate.clone().add(filterDays, "days");
+          return products.filter((product) => {
+            const expiryDate = moment(product.expiry_date);
+            return expiryDate.isBetween(currentDate, filterDate, null, "[]");
+          });
+        }
       }
+
+      // Add a default return statement to return all products if none of the conditions are met
+      return products;
     },
   },
+
   components: { ErrorAlert, SuccessAlert, EditProductComponent },
   methods: {
     editProduct(product) {

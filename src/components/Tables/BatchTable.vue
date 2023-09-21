@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top: 30px">
     <div class="table">
       <div class="container">
         <div class="z-depth-1 white t-wrapper">
@@ -36,8 +36,8 @@
             </thead>
             <tbody name="table-row" is="transition-group">
               <tr v-for="(batch, index) in batches" :key="batch.id">
+                <td>{{ index + 1 }}</td>
                 <a :href="'/batch/' + batch.id">
-                  <td>{{ index + 1 }}</td>
                   <td>{{ batch.batch_name }}</td>
                 </a>
 

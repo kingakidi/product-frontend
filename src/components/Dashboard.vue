@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top: 30px">
     <buttons></buttons>
     <summary-component></summary-component>
     <table-component

@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-side-effects-in-computed-properties -->
 <template>
-  <div>
+  <div style="margin-top: 30px">
     <buttons></buttons>
     <table-component
       table-title="Product List"

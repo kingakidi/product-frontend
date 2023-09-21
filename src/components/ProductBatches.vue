@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top: 30px">
     <buttons></buttons>
     <batch-table></batch-table>
   </div>

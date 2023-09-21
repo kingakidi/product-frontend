@@ -5,11 +5,14 @@ import Dashboard from "./components/Dashboard.vue";
 import ProductList from "./components/ProductList.vue";
 import ProductBatches from "./components/ProductBatches.vue";
 import LoginComponent from "./components/LoginComponent.vue";
+import BatchComponent from "./components/BatchComponent.vue";
+
 import beforeEnter from "./auth";
 import axios from "axios";
 
 const router = new VueRouter({
   //mode: 'history',
+  mode: "history",
   routes: [
     {
       path: "/product_batches",
@@ -27,8 +30,8 @@ const router = new VueRouter({
       // beforeEnter,
     },
     {
-      path: "/batche/:batchId",
-      component: ProductList,
+      path: "/batch/:batchId",
+      component: BatchComponent,
     },
     {
       path: "/",
